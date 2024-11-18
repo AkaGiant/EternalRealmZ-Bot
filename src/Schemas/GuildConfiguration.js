@@ -1,9 +1,9 @@
-const mongoose = require('mongoose'); 
+const mongoose = require('mongoose');
 
 const defaultTraders = ['Black Market', 'Consumables', 'Weapons', 'Vehicles'];
 
 const traderSchema = new mongoose.Schema({
-  name: { type: String, required: true }, // Name of the trader
+  name: { type: String, required: true },
   items: {
     type: Map,
     of: new mongoose.Schema({
@@ -11,7 +11,7 @@ const traderSchema = new mongoose.Schema({
       sellPrice: { type: Number, default: null },
       missing: { type: Boolean, default: false },
       reportedMissing: { type: Boolean, default: false },
-      confirmedSet: { type: Boolean, default: false } 
+      confirmedSet: { type: Boolean, default: false }
     })
   }
 });
@@ -25,8 +25,8 @@ const guildConfigurationSchema = new mongoose.Schema({
   },
   settings: {
     traders: {
-      type: [traderSchema], // This defines an array of `traderSchema`
-      default: [] // Default value as an empty array
+      type: [traderSchema],
+      default: []
     }
   },
   createdAt: {
@@ -39,13 +39,11 @@ const guildConfigurationSchema = new mongoose.Schema({
   }
 });
 
-// Pre-save middleware to update the `updatedAt` field
 guildConfigurationSchema.pre('save', function (next) {
   this.updatedAt = Date.now();
   next();
 });
 
-// Create the model from the schema
 const GuildConfiguration = mongoose.model('GuildConfiguration', guildConfigurationSchema);
 
 module.exports = GuildConfiguration;
