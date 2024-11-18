@@ -1,0 +1,6 @@
+{
+    "generalMessages": {
+        "SystemPrefix": "[Blah blah blah]",
+        "BotOnline": "-----------------------------------\n%ClientTag% Online\nCurrent Servers: %ServersSize%\n-----------------------------------"
+    }
+}

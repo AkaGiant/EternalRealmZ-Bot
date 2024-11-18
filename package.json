@@ -1,0 +1,40 @@
+{
+  "name": "eternalrealmzbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "pm2 start index.js --name Development",
+    "stop": "pm2 delete Development",
+    "postinstall": "link-module-alias"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-table": "^0.0.9",
+    "colors": "^1.4.0",
+    "discord.js": "^14.16.3",
+    "djs-commander": "^0.0.50",
+    "dotenv": "^16.4.5",
+    "fs": "^0.0.1-security",
+    "glob": "^7.2.3",
+    "global": "^4.4.0",
+    "google-spreadsheet": "^3.3.0",
+    "link-module-alias": "^1.2.0",
+    "mongodb": "^6.10.0",
+    "mongoose": "^8.8.1",
+    "promisify": "^0.0.3",
+    "reflect-metadata": "^0.1.14"
+  },
+  "_moduleAliases": {
+    "$Configs": "src/Configurations/",
+    "$Utils": "src/Utils/",
+    "$Validation": "src/Validation/",
+    "$Entities": "src/Typeorm/Entities"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "nodemon": "^3.1.7"
+  }
+}
