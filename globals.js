@@ -1,5 +1,3 @@
-// globals.js
-
 /**
  * @typedef {Object} Item
  * @property {number|null} buyPrice - The price to buy the item.

@@ -1,10 +1,10 @@
-const { SlashCommandBuilder, PermissionFlagsBits } = require('discord.js');
+const { SlashCommandBuilder, PermissionFlagsBits } = require("discord.js");
 
 module.exports = {
   data: new SlashCommandBuilder()
-          .setName('ping2')
-          .setDescription('Pong2!')
-          .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+    .setName("ping2")
+    .setDescription("Pong2!")
+    .setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
   category: "lol",
   // deleted: true,
   run: ({ interaction, client, handler }) => {

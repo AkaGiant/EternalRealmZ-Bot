@@ -7,7 +7,8 @@
     "dev": "nodemon index.js",
     "start": "pm2 start index.js --name Development",
     "stop": "pm2 delete Development",
-    "postinstall": "link-module-alias"
+    "postinstall": "link-module-alias",
+    "preinstall": "command -v link-module-alias && link-module-alias clean || true"
   },
   "author": "",
   "license": "ISC",
@@ -21,17 +22,10 @@
     "glob": "^7.2.3",
     "global": "^4.4.0",
     "google-spreadsheet": "^3.3.0",
-    "link-module-alias": "^1.2.0",
     "mongodb": "^6.10.0",
     "mongoose": "^8.8.1",
     "promisify": "^0.0.3",
     "reflect-metadata": "^0.1.14"
-  },
-  "_moduleAliases": {
-    "$Configs": "src/Configurations/",
-    "$Utils": "src/Utils/",
-    "$Validation": "src/Validation/",
-    "$Entities": "src/Typeorm/Entities"
   },
   "devDependencies": {
     "@types/node": "^22.9.0",
