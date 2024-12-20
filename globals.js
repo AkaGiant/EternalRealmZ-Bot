@@ -14,8 +14,15 @@
  */
 
 /**
+ * @typedef {Object} welcomeLeaveSettingsSchema
+ * @property {string} name - The name of the trader.
+ * @property {Map<string, Item>} items - A map of item names to their details.
+ */
+
+/**
  * @typedef {Object} GuildSettings
  * @property {Trader[]} traders - The list of traders.
+ * @property {welcomeLeaveSettingsSchema[]} welcomeLeaveSettings - The list of welcome leave settings.
  */
 
 /**

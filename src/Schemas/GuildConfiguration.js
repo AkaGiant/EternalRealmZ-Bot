@@ -43,6 +43,44 @@ const traderSchema = new mongoose.Schema({
   },
 });
 
+// Embed schema
+const embedSchema = new mongoose.Schema({
+  title: { type: String, maxlength: 256 },
+  description: { type: String, maxlength: 4096 },
+  url: { type: String, match: /^https?:\/\/[^\s$.?#].[^\s]*$/ },
+  color: { type: Number, min: 0, max: 16777215 },
+  timestamp: { type: Date },
+  footer: {
+    text: { type: String, maxlength: 2048 },
+    icon_url: { type: String, match: /^https?:\/\/[^\s$.?#].[^\s]*$/ },
+  },
+  image: {
+    url: { type: String, match: /^https?:\/\/[^\s$.?#].[^\s]*$/ },
+  },
+  thumbnail: {
+    url: { type: String, match: /^https?:\/\/[^\s$.?#].[^\s]*$/ },
+  },
+  author: {
+    name: { type: String, maxlength: 256 },
+    url: { type: String, match: /^https?:\/\/[^\s$.?#].[^\s]*$/ },
+    icon_url: { type: String, match: /^https?:\/\/[^\s$.?#].[^\s]*$/ },
+  },
+  fields: [
+    {
+      name: { type: String, maxlength: 256, required: true },
+      value: { type: String, maxlength: 1024, required: true },
+      inline: { type: Boolean, default: false },
+    },
+  ],
+});
+
+const welcomeLeaveSettingsSchema = new mongoose.Schema({
+  welcomeChannelId: { type: String, required: false },
+  leaveChannelId: { type: String, required: false },
+  welcomeEmbed: { type: embedSchema, required: false },
+  leaveEmbed: { type: embedSchema, required: false }, 
+});
+
 // Define the schema
 const guildConfigurationSchema = new mongoose.Schema({
   guildId: {
@@ -57,6 +95,7 @@ const guildConfigurationSchema = new mongoose.Schema({
     },
   },
   changelogs: [changeLogSchema],
+  welcomeLeaveSettings: [welcomeLeaveSettingsSchema],
   createdAt: {
     type: Date,
     default: Date.now,

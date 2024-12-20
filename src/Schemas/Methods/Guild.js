@@ -18,8 +18,8 @@ async function handleNewGuild(guildId) {
 
     guildConfig = new GuildConfiguration({
       guildId,
-      settings: { traders: [] },
-      changelogs: [], // Empty changelogs by default
+      settings: { traders: [], welcomeLeaveSettings: [] },
+      changelogs: [],
     });
 
     await guildConfig.save();
