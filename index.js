@@ -1,7 +1,11 @@
 require("dotenv").config();
+require("module-alias/register");
+
 const { Client, IntentsBitField } = require("discord.js");
 const path = require("path");
-const { CommandHandler } = require("djs-commander");
+
+const { CommandKit } = require("commandkit");
+
 const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
 const {
@@ -9,7 +13,7 @@ const {
   populateCache,
   getGuildConfig,
   cache,
-} = require("./src/Schemas/Methods/Guild");
+} = require("@Guild");
 
 const databaseName = process.env.MONGODB_DATABASE_NAME;
 let database;
@@ -55,12 +59,15 @@ const client = new Client({
 mongoose.connect(process.env.MONGODB_URI);
 
 // Set up the command handler
-new CommandHandler({
+new CommandKit({
   client,
   commandsPath: path.join(__dirname, "src/commands"),
   eventsPath: path.join(__dirname, "src/events"),
   validationsPath: path.join(__dirname, "src/validations"),
-  testServer: process.env.DEVELOPMENT_SERVER_ID,
+  devGuildIds: [process.env.DEVELOPMENT_SERVER_ID],
+  devUserIds: [process.env.DEVELOPER_USER_ID],
+  skipBuiltInValidations: true,
+  bulkRegister: true,
 });
 
 client.login(process.env.BOT_TOKEN);

@@ -33,23 +33,29 @@ function createTable(handler) {
 
   handler.commands.map((cmd) => {
     table.addRow(
-      cmd.name,
-      cmd.category == null ? "No Category" : cmd.category,
-      cmd.description,
+      cmd.data.name == null ? "No Name" : cmd.data.name,
+      getCategory(cmd),
+      cmd.data.description == null ? "No Description" : cmd.data.description,
       convertPermissions(cmd.default_member_permissions)
     );
   });
+
+  if (table.toString().length === 8) {
+    console.log("No Commands Loaded");
+    return;
+  }
 
   table.setAlign(0, AsciiTable.CENTER);
   table.setAlign(1, AsciiTable.CENTER);
   table.setAlign(2, AsciiTable.CENTER);
   table.setAlign(3, AsciiTable.CENTER);
 
-  if (table.toString().length === 8) {
-    console.log("No Commands Loaded");
-    return;
-  }
   console.log(table.toString());
+}
+
+function getCategory(cmd) {
+  if (cmd.data.customCategory != null) return cmd.data.customCategory;
+  else return cmd.category;
 }
 
 const permissionMap = {

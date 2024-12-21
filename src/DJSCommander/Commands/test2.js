@@ -3,7 +3,7 @@ const {
   PermissionFlagsBits,
   CommandInteraction,
 } = require("discord.js");
-const guildConfigCache = require("../Schemas/Methods/Guild");
+const guildConfigCache = require("../../Schemas/Methods/Guild");
 
 module.exports = {
   data: new SlashCommandBuilder()
