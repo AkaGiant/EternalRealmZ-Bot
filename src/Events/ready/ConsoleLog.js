@@ -3,14 +3,12 @@ const EventUtils = require("../../Utils/EventUtils");
 // Messages
 const { generalMessages } = require("../../Configurations/messages.json");
 
-const { CommandHandler } = require("djs-commander");
 const { Client, ActivityType } = require("discord.js");
 
 const AsciiTable = require("ascii-table/ascii-table");
 
 /**
  * @param {Client} client
- * @param {CommandHandler} handler
  */
 
 module.exports = async (argument, client, handler) => {

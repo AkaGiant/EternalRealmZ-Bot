@@ -1,11 +1,8 @@
 const { Client, Guild, CommandInteraction } = require("discord.js");
 
-const { CommandHandler } = require("djs-commander");
-
 /**
  * @param {CommandInteraction} argument
  * @param {Client} client
- * @param {CommandHandler} handler
  */
 module.exports = async (interaction, client, handler) => {
   if (interaction.isAutocomplete()) {

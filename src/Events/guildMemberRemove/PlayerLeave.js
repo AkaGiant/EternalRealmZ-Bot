@@ -1,4 +1,3 @@
-const { CommandHandler } = require("djs-commander");
 const {
   Client,
   ActivityType,
@@ -8,7 +7,6 @@ const {
 } = require("discord.js");
 /**
  * @param {Client} client
- * @param {CommandHandler} handler
  * @param {GuildMemberManager} argument
  */
 module.exports = async (argument, client, handler) => {
