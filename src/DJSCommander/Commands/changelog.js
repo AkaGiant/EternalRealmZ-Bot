@@ -459,7 +459,7 @@ async function pushChangelog(interaction, changelogId) {
       ephemeral: true,
     });
   }
-  // Here you might handle the changelog being pushed for public view
+
   return interaction.reply({
     content: `Changelog ID ${changelogId} pushed for public view.`,
     ephemeral: true,

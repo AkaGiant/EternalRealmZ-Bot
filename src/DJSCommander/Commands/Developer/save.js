@@ -20,7 +20,6 @@ module.exports = {
      * @param {CommandInteraction} interaction
      * @param {Client} client
      */
-
     saveGuildConfigsToDatabase();
     interaction.reply({
       embeds: [
